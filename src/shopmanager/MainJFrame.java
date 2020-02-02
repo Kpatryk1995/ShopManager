@@ -549,11 +549,29 @@ public class MainJFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) this.jTable3.getModel();
 
         int[] rows = jTable3.getSelectedRows();
-
+        int columnCount = model.getColumnCount();
+        int rowCount = model.getRowCount();
+        
         for (int i = 0; i < rows.length; i++) {
+            String RowData = "", objectRowData = "";
+            for(int rowStep=0; rowStep<rowCount; rowStep++)
+            {
+                OrderModel order = Orders.get(rowStep);
+                
+                objectRowData += String.valueOf(order.GetId()) + " " + order.GetClient().toString() + "\n";
+                for(int columnStep=0; columnStep<columnCount; columnStep++)
+                {
+                    RowData += model.getValueAt(rowStep, columnStep).toString() + " ";
+                }
+                RowData += "\n";
+            }
+            
             Orders.remove(i);
-
+            
             model.removeRow(rows[i] - i);
+            
+            MainJFrame.Message(RowData, "ROW DATA");
+            MainJFrame.Message(objectRowData, "OBJECT ROW DATA");
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 

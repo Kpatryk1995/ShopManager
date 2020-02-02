@@ -49,6 +49,18 @@ public class OrderModel
         return this.Products;
     }
     
+    public String GetProducts_string()
+    {
+        String productsString = "";
+        
+        for(int i=0; i<Products.size(); i++)
+        {
+            
+        }
+        
+        return productsString;
+    }
+    
     public void SetProducts(List<ProductModel> Products)
     {
         this.Products = Products;
